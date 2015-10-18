@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="Lib/lib/slf4j-api-1.6.6.jar"/>
 	<classpathentry kind="lib" path="Lib/lib/c3p0-0.9.1.1.jar"/>
 	<classpathentry kind="lib" path="Lib/lib/quartz-2.2.1.jar"/>
+	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
