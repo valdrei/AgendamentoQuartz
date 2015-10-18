@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 
 public class OSInterface {
 
+	public OSInterface(){
+		
+	}
 
 	private String executeCommand(String commandLine){
 		
