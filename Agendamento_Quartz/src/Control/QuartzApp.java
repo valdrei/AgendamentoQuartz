@@ -1,4 +1,4 @@
-package AgendaQuartz;
+package Control;
 
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
