@@ -10,30 +10,32 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
+import Model.ScheduleSetup;
+
 
 public class QuartzApp {
 	
-	//A expressão de tempo implementada na classe testadora é passada por parâmetro. 
+	//A expressÃ£o de tempo implementada na classe testadora Ã© passada por parÃ¢metro. 
 	public void quartzApp01(String valores){
 		
-		//Implementção do padrão factory a partir da classe StdSchedulerFactory.
+		//ImplementÃ§Ã£o do padrÃ£o factory a partir da classe StdSchedulerFactory.
 		SchedulerFactory shedFact = new StdSchedulerFactory();
 		try{
-			//captura de uma instância de Scheduler, a partir dele é possivel monitorar tarefas e agendas
+			//captura de uma instÃ¢ncia de Scheduler, a partir dele Ã© possivel monitorar tarefas e agendas
 			Scheduler scheduler = shedFact.getScheduler();
 			
 			//inicia o monitoramento
 			scheduler.start();
 			
-			//Neste ponto é onde começa a definir o job, usando o JobBuilder.
-			//É a partir dele que chamamos a classe que esta com as funcionalidades que serão executadas.
-			//Identificamos o job através do withIdentity e criamos um grupo para ele.
+			//Neste ponto Ã© onde comeÃ§a a definir o job, usando o JobBuilder.
+			//Ã‰ a partir dele que chamamos a classe que esta com as funcionalidades que serÃ£o executadas.
+			//Identificamos o job atravÃ©s do withIdentity e criamos um grupo para ele.
 			JobDetail job = JobBuilder.newJob(ValidadorJob.class).withIdentity("ValidadorJob","grupo01").build();
 			
-			//A trigger é responsael por configurar o agendamento das tarefas e disparar as tarefas.
-			//Utiliza o mesmo conceito de idendificação  que o Job, e deve estar no mesmo grupo mencionado no job.
-			//withSchedule é responsavel por implementar os dados do agendamento, a partir dele utilizamos o CronScheduleBuilder que
-			// é responsavel por trabalhar com o Crontrigger, o mesmo utiliza a expressão armazenada na variavel passada por parâmetro.
+			//A trigger Ã© responsael por configurar o agendamento das tarefas e disparar as tarefas.
+			//Utiliza o mesmo conceito de idendificaÃ§Ã£o  que o Job, e deve estar no mesmo grupo mencionado no job.
+			//withSchedule Ã© responsavel por implementar os dados do agendamento, a partir dele utilizamos o CronScheduleBuilder que
+			// Ã© responsavel por trabalhar com o Crontrigger, o mesmo utiliza a expressÃ£o armazenada na variavel passada por parÃ¢metro.
 			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("ValidadorTRIGGER", "grupo01").withSchedule(CronScheduleBuilder.cronSchedule(valores)).build();
 			
 			//Adiciona os objetos job e trigger ao scheduler, dessa maneira ele sabera qual tarefa executar e em qual tempo ela deve ser chamada.
@@ -48,8 +50,8 @@ public class QuartzApp {
 	}
 		
 	
-	// Metodo abaixo utiliza os mesmo conceitos utilizados acima, sua diferença esta na classe em o job chama e 
-	// o tempo de execução da trigger.
+	// Metodo abaixo utiliza os mesmo conceitos utilizados acima, sua diferenÃ§a esta na classe em o job chama e 
+	// o tempo de execuÃ§Ã£o da trigger.
 		public void quartzApp02(String valores){
 			
 			SchedulerFactory shedFact = new StdSchedulerFactory();
@@ -69,7 +71,27 @@ public class QuartzApp {
 				e.printStackTrace();
 			}
 	}
-	
+		
+		
+		public void setSchedule(ScheduleSetup schedule){
+
+		
+		/*Parï¿½metros de execuï¿½ï¿½o do job.
+		Cada variavel implementa um parï¿½metro que pode ser usado em um ou mais jobs.
+		Funciona da seguinte forma da esquerda para a direita ( segundos , minutos, horas , dia do mï¿½s, dia da semana e ano)
+		Resumindo onde esta "0/10" sï¿½o os segundos, neste caso na variavel 'teste' sï¿½o 10 segundos, se
+		usasse apenas 10 estariamos dizendo que a execuï¿½ï¿½o de cada job iria ocorrer toda vez nos 10 segundos de qualquer minuto.
+		*/
+		//teste = "0/10 * * * * ?";
+		//teste2 = "0/15 * * * * ?";
+		
+		
+		
+		//chamando os metodos e passando como parï¿½metros o tempo de execuï¿½ï¿½o de cada job. 
+		this.quartzApp01(schedule.getSecCache());
+		this.quartzApp02(schedule.getSecCacheClear());
+		
+		}
 	
 
 }
