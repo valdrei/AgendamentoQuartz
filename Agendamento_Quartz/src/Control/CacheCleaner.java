@@ -16,9 +16,15 @@ public class CacheCleaner implements Job {
 	//Metodo execute é quem ira guardar a logica que deverá ser executada
 	public void execute(JobExecutionContext arg0) throws JobExecutionException{
 		//Simulação
-		System.out.println("Limpando Cache");
-		System.out.println(os.executeCommand(""));
-		System.out.println(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date( (System.currentTimeMillis())))); 
+		
+		//Coleta a data
+		String data=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date( (System.currentTimeMillis())));
+		//Define o comando
+		String comando="del C:\\log*";
+		System.out.println("\nRemovendo Cache\n");
+		System.out.println(comando);
+		System.out.println(os.executeCommand(comando));
+		System.out.println("Executed: "+data); 
 		
 		
 	}

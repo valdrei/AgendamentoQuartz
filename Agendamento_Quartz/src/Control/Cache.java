@@ -16,11 +16,13 @@ public class Cache implements Job{
 	//Metodo execute � quem ira guardar a logica que dever� ser executada
 	public void execute(JobExecutionContext args0) throws JobExecutionException{
 		//Simula��o
-		System.out.println("Criando Cache");
-		System.out.println(os.executeCommand(""));
-		System.out.println(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date( (System.currentTimeMillis())))); 
-		System.out.println("Executando Quartz 1 em: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date( (System.currentTimeMillis())))); 
-	
+		String data=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date( (System.currentTimeMillis())));
+		String comando="copy NUL C:\\log"+data+".txt";
+		System.out.println("\nCriando Cache\n");
+		System.out.println(comando);
+		System.out.println(os.executeCommand(comando));
+		System.out.println("Executed: "+data); 
+
 		
 	}
 
