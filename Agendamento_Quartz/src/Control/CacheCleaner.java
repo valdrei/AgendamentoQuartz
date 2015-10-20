@@ -18,7 +18,8 @@ public class CacheCleaner implements Job {
 		//Simulação
 		
 		//Coleta a data
-		String data=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date( (System.currentTimeMillis())));
+		//String dataComando=new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date( (System.currentTimeMillis())));
+		String data=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date( (System.currentTimeMillis())));
 		//Define o comando
 		String comando="del C:\\log*";
 		System.out.println("\nRemovendo Cache\n");
