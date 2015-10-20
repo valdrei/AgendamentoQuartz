@@ -28,8 +28,8 @@ public class Testadora {
 		
 		
 		//chamando os metodos e passando como par�metros o tempo de execu��o de cada job. 
-		testando.quartzApp01(teste);
-		testando.quartzApp02(teste2);
+		testando.quartzApp01(teste,"teste1","trigger1",new Cache().getClass());
+		testando.quartzApp01(teste2,"teste2","trigger2",new CacheCleaner().getClass());
 	
 		
 	}

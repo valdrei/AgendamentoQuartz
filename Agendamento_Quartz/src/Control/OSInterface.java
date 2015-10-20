@@ -10,7 +10,7 @@ public class OSInterface {
 		
 	}
 
-	private String executeCommand(String commandLine){
+	public String executeCommand(String commandLine){
 		
 		boolean success = false;  
 	    String result;  
